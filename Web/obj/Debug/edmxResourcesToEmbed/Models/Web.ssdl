@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="webModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+<Schema Namespace="WebMVCModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
   <EntityType Name="BaoCao">
     <Key>
       <PropertyRef Name="ID" />
@@ -9,8 +9,9 @@
     <Property Name="Nhom_ID" Type="int" />
     <Property Name="TieuDe" Type="nvarchar" MaxLength="50" />
     <Property Name="NoiDung" Type="ntext" />
-    <Property Name="ThoiGianBaoCao" Type="date" />
+    <Property Name="ThoiGianBaoCao" Type="datetime" />
     <Property Name="FileUpload" Type="varchar" MaxLength="500" />
+    <Property Name="FilePath" Type="varchar" MaxLength="500" />
   </EntityType>
   <EntityType Name="ChucVu">
     <Key>
@@ -110,6 +111,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ChucVu_NguoiDung_ChucVu1">
+    <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="1" />
+    <End Role="ChucVu_NguoiDung" Type="Self.ChucVu_NguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChucVu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChucVu_NguoiDung">
+        <PropertyRef Name="NguoiDung_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChucVu_NguoiDung_NguoiDung1">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
+    <End Role="ChucVu_NguoiDung" Type="Self.ChucVu_NguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChucVu_NguoiDung">
+        <PropertyRef Name="NguoiDung_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_NguoiDung_DeTai">
     <End Role="DeTai" Type="Self.DeTai" Multiplicity="0..1" />
     <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
@@ -170,30 +195,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PhanQuyen_NguoiDung_NguoiDung">
-    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
-    <End Role="ChucVu_NguoiDung" Type="Self.ChucVu_NguoiDung" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="NguoiDung">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ChucVu_NguoiDung">
-        <PropertyRef Name="NguoiDung_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PhanQuyen_NguoiDung_PhanQuyen">
-    <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="1" />
-    <End Role="ChucVu_NguoiDung" Type="Self.ChucVu_NguoiDung" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="ChucVu">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="ChucVu_NguoiDung">
-        <PropertyRef Name="ChucVu_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_QuyenHan_ChucVu_ChucVu">
     <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="1" />
     <End Role="QuyenHan_ChucVu" Type="Self.QuyenHan_ChucVu" Multiplicity="*" />
@@ -249,7 +250,7 @@
     <Parameter Name="new_diagramname" Type="nvarchar" Mode="In" />
   </Function>
   <Function Name="sp_upgraddiagrams" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
-  <EntityContainer Name="webModelStoreContainer">
+  <EntityContainer Name="WebMVCModelStoreContainer">
     <EntitySet Name="BaoCao" EntityType="Self.BaoCao" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChucVu" EntityType="Self.ChucVu" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="ChucVu_NguoiDung" EntityType="Self.ChucVu_NguoiDung" Schema="dbo" store:Type="Tables" />
@@ -264,6 +265,14 @@
     <AssociationSet Name="FK_BaoCao_Nhom" Association="Self.FK_BaoCao_Nhom">
       <End Role="Nhom" EntitySet="Nhom" />
       <End Role="BaoCao" EntitySet="BaoCao" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChucVu_NguoiDung_ChucVu1" Association="Self.FK_ChucVu_NguoiDung_ChucVu1">
+      <End Role="ChucVu" EntitySet="ChucVu" />
+      <End Role="ChucVu_NguoiDung" EntitySet="ChucVu_NguoiDung" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChucVu_NguoiDung_NguoiDung1" Association="Self.FK_ChucVu_NguoiDung_NguoiDung1">
+      <End Role="NguoiDung" EntitySet="NguoiDung" />
+      <End Role="ChucVu_NguoiDung" EntitySet="ChucVu_NguoiDung" />
     </AssociationSet>
     <AssociationSet Name="FK_NguoiDung_DeTai" Association="Self.FK_NguoiDung_DeTai">
       <End Role="DeTai" EntitySet="DeTai" />
@@ -284,14 +293,6 @@
     <AssociationSet Name="FK_PhanHoi_BaoCao" Association="Self.FK_PhanHoi_BaoCao">
       <End Role="BaoCao" EntitySet="BaoCao" />
       <End Role="PhanHoi" EntitySet="PhanHoi" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PhanQuyen_NguoiDung_NguoiDung" Association="Self.FK_PhanQuyen_NguoiDung_NguoiDung">
-      <End Role="NguoiDung" EntitySet="NguoiDung" />
-      <End Role="ChucVu_NguoiDung" EntitySet="ChucVu_NguoiDung" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PhanQuyen_NguoiDung_PhanQuyen" Association="Self.FK_PhanQuyen_NguoiDung_PhanQuyen">
-      <End Role="ChucVu" EntitySet="ChucVu" />
-      <End Role="ChucVu_NguoiDung" EntitySet="ChucVu_NguoiDung" />
     </AssociationSet>
     <AssociationSet Name="FK_QuyenHan_ChucVu_ChucVu" Association="Self.FK_QuyenHan_ChucVu_ChucVu">
       <End Role="ChucVu" EntitySet="ChucVu" />

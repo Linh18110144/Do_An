@@ -39,7 +39,7 @@ namespace Web.Models
         [Required(ErrorMessage = "{0} bắt buộc nhập")]
         public Nullable<System.DateTime> ThoiGianKetThuc { get; set; }
 
-        [Display(Name ="Số tuần thực hiện")]
+        [Display(Name = "Sồ tuần thực hiện")]
         public Nullable<int> SoTuanThucHien { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

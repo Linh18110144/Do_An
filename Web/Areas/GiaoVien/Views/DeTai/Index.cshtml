@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/SinhVien/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/GiaoVien/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
@@ -30,29 +30,30 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenDeTai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.YeuCauDeTai)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ThoiGianBatDau)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ThoiGianKetThuc)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SoTuanThucHien)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TenDeTai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.YeuCauDeTai)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThoiGianBatDau)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThoiGianKetThuc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SoTuanThucHien)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>

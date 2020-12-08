@@ -140,52 +140,52 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\BaoCao.cs">
-      <DependentUpon>WebMVC.tt</DependentUpon>
+      <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChucVu.cs">
-      <DependentUpon>WebMVC.tt</DependentUpon>
+      <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChucVu_NguoiDung.cs">
-      <DependentUpon>WebMVC.tt</DependentUpon>
+      <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DeTai.cs">
-      <DependentUpon>WebMVC.tt</DependentUpon>
+      <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\NguoiDung.cs">
-      <DependentUpon>WebMVC.tt</DependentUpon>
+      <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Nhom.cs">
-      <DependentUpon>WebMVC.tt</DependentUpon>
+      <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PhanHoi.cs">
-      <DependentUpon>WebMVC.tt</DependentUpon>
+      <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\QuyenHan.cs">
-      <DependentUpon>WebMVC.tt</DependentUpon>
+      <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
-      <DependentUpon>WebMVC.tt</DependentUpon>
+      <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagrams_Result.cs">
-      <DependentUpon>WebMVC.tt</DependentUpon>
+      <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sysdiagram.cs">
-      <DependentUpon>WebMVC.tt</DependentUpon>
+      <DependentUpon>Web.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\WebMVC.Context.cs">
+    <Compile Include="Models\Web.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WebMVC.Context.tt</DependentUpon>
+      <DependentUpon>Web.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\WebMVC.cs">
+    <Compile Include="Models\Web.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WebMVC.tt</DependentUpon>
+      <DependentUpon>Web.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\WebMVC.Designer.cs">
+    <Compile Include="Models\Web.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WebMVC.edmx</DependentUpon>
+      <DependentUpon>Web.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -1881,15 +1881,15 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\WebMVC.Context.tt">
+    <Content Include="Models\Web.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebMVC.edmx</DependentUpon>
-      <LastGenOutput>WebMVC.Context.cs</LastGenOutput>
+      <DependentUpon>Web.edmx</DependentUpon>
+      <LastGenOutput>Web.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Models\WebMVC.tt">
+    <Content Include="Models\Web.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WebMVC.edmx</DependentUpon>
-      <LastGenOutput>WebMVC.cs</LastGenOutput>
+      <DependentUpon>Web.edmx</DependentUpon>
+      <LastGenOutput>Web.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -2069,26 +2069,26 @@
     <Content Include="Assets\GiaoVien\vendor\jquery\jquery.slim.min.map" />
     <Content Include="Areas\GiaoVien\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\SinhVien\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\SinhVien\Views\DeTai\Details.cshtml" />
+    <Content Include="Areas\SinhVien\Views\DeTai\Index.cshtml" />
+    <EntityDeploy Include="Models\Web.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Web.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Web.edmx.diagram">
+      <DependentUpon>Web.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\SinhVien\Views\BaoCao\Create.cshtml" />
+    <Content Include="Areas\SinhVien\Views\BaoCao\Details.cshtml" />
+    <Content Include="Areas\SinhVien\Views\BaoCao\Index.cshtml" />
     <Content Include="Areas\GiaoVien\Views\DeTai\Create.cshtml" />
     <Content Include="Areas\GiaoVien\Views\DeTai\Delete.cshtml" />
     <Content Include="Areas\GiaoVien\Views\DeTai\Details.cshtml" />
     <Content Include="Areas\GiaoVien\Views\DeTai\Edit.cshtml" />
     <Content Include="Areas\GiaoVien\Views\DeTai\Index.cshtml" />
-    <Content Include="Areas\SinhVien\Views\DeTai\Details.cshtml" />
-    <Content Include="Areas\SinhVien\Views\DeTai\Index.cshtml" />
-    <Content Include="Areas\SinhVien\Views\BaoCao\Create.cshtml" />
-    <Content Include="Areas\SinhVien\Views\BaoCao\Details.cshtml" />
-    <Content Include="Areas\SinhVien\Views\BaoCao\Index.cshtml" />
     <Content Include="Areas\GiaoVien\Views\BaoCao\Delete.cshtml" />
     <Content Include="Areas\GiaoVien\Views\BaoCao\Details.cshtml" />
     <Content Include="Areas\GiaoVien\Views\BaoCao\Index.cshtml" />
-    <EntityDeploy Include="Models\WebMVC.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WebMVC.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\WebMVC.edmx.diagram">
-      <DependentUpon>WebMVC.edmx</DependentUpon>
-    </Content>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2121,6 +2121,7 @@
     <Folder Include="Areas\GiaoVien\Data\" />
     <Folder Include="Areas\SinhVien\Data\" />
     <Folder Include="Assets\SinhVien\" />
+    <Folder Include="UploadFiles\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

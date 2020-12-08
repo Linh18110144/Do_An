@@ -2,12 +2,14 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/SinhVien/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/GiaoVien/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Index</h2>
 
-
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -24,6 +26,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.FileUpload)
+        </th>
+        <th>
+            Download
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Nhom.MaNhom)
@@ -49,9 +54,15 @@
             @Html.DisplayFor(modelItem => item.FileUpload)
         </td>
         <td>
+            <a href="/@item.FilePath" download>
+                Download
+            </a>
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Nhom.MaNhom)
         </td>
         <td>
+            
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ID })
         </td>

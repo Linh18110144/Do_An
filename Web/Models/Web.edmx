@@ -16,6 +16,7 @@
           <Property Name="NoiDung" Type="ntext" />
           <Property Name="ThoiGianBaoCao" Type="datetime" />
           <Property Name="FileUpload" Type="varchar" MaxLength="500" />
+          <Property Name="FilePath" Type="varchar" MaxLength="500" />
         </EntityType>
         <EntityType Name="ChucVu">
           <Key>
@@ -323,6 +324,7 @@
           <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ThoiGianBaoCao" Type="DateTime" Precision="3" />
           <Property Name="FileUpload" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Nhom" Relationship="Self.FK_BaoCao_Nhom" FromRole="BaoCao" ToRole="Nhom" />
           <NavigationProperty Name="PhanHois" Relationship="Self.FK_PhanHoi_BaoCao" FromRole="BaoCao" ToRole="PhanHoi" />
         </EntityType>
@@ -590,6 +592,7 @@
                 <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
                 <ScalarProperty Name="ThoiGianBaoCao" ColumnName="ThoiGianBaoCao" />
                 <ScalarProperty Name="FileUpload" ColumnName="FileUpload" />
+                <ScalarProperty Name="FilePath" ColumnName="FilePath" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

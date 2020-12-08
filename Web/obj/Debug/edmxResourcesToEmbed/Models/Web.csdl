@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Schema Namespace="webModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+<Schema Namespace="WebMVCModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
   <EntityType Name="BaoCao">
     <Key>
       <PropertyRef Name="ID" />
@@ -9,8 +9,9 @@
     <Property Name="Nhom_ID" Type="Int32" />
     <Property Name="TieuDe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
     <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="ThoiGianBaoCao" Type="DateTime" Precision="0" />
+    <Property Name="ThoiGianBaoCao" Type="DateTime" Precision="3" />
     <Property Name="FileUpload" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="FilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="Nhom" Relationship="Self.FK_BaoCao_Nhom" FromRole="BaoCao" ToRole="Nhom" />
     <NavigationProperty Name="PhanHois" Relationship="Self.FK_PhanHoi_BaoCao" FromRole="BaoCao" ToRole="PhanHoi" />
   </EntityType>
@@ -20,8 +21,18 @@
     </Key>
     <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="TenChucVu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
-    <NavigationProperty Name="NguoiDungs" Relationship="Self.ChucVu_NguoiDung" FromRole="ChucVu" ToRole="NguoiDung" />
+    <NavigationProperty Name="ChucVu_NguoiDung" Relationship="Self.FK_ChucVu_NguoiDung_ChucVu1" FromRole="ChucVu" ToRole="ChucVu_NguoiDung" />
     <NavigationProperty Name="QuyenHans" Relationship="Self.QuyenHan_ChucVu" FromRole="ChucVu" ToRole="QuyenHan" />
+  </EntityType>
+  <EntityType Name="ChucVu_NguoiDung">
+    <Key>
+      <PropertyRef Name="NguoiDung_ID" />
+      <PropertyRef Name="ChucVu_ID" />
+    </Key>
+    <Property Name="NguoiDung_ID" Type="Int32" Nullable="false" />
+    <Property Name="ChucVu_ID" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ChucVu" Relationship="Self.FK_ChucVu_NguoiDung_ChucVu1" FromRole="ChucVu_NguoiDung" ToRole="ChucVu" />
+    <NavigationProperty Name="NguoiDung" Relationship="Self.FK_ChucVu_NguoiDung_NguoiDung1" FromRole="ChucVu_NguoiDung" ToRole="NguoiDung" />
   </EntityType>
   <EntityType Name="DeTai">
     <Key>
@@ -45,9 +56,9 @@
     <Property Name="HoTen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
     <Property Name="Nhom_ID" Type="Int32" />
     <Property Name="DeTai_ID" Type="Int32" />
+    <NavigationProperty Name="ChucVu_NguoiDung" Relationship="Self.FK_ChucVu_NguoiDung_NguoiDung1" FromRole="NguoiDung" ToRole="ChucVu_NguoiDung" />
     <NavigationProperty Name="DeTai" Relationship="Self.FK_NguoiDung_DeTai" FromRole="NguoiDung" ToRole="DeTai" />
     <NavigationProperty Name="Nhom" Relationship="Self.FK_NguoiDung_Nhom" FromRole="NguoiDung" ToRole="Nhom" />
-    <NavigationProperty Name="ChucVus" Relationship="Self.ChucVu_NguoiDung" FromRole="NguoiDung" ToRole="ChucVu" />
     <NavigationProperty Name="QuyenHans" Relationship="Self.NguoiDung_QuyenHan" FromRole="NguoiDung" ToRole="QuyenHan" />
   </EntityType>
   <EntityType Name="Nhom">
@@ -112,6 +123,30 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
+  <Association Name="FK_ChucVu_NguoiDung_ChucVu1">
+    <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="1" />
+    <End Role="ChucVu_NguoiDung" Type="Self.ChucVu_NguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ChucVu">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChucVu_NguoiDung">
+        <PropertyRef Name="NguoiDung_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ChucVu_NguoiDung_NguoiDung1">
+    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="1" />
+    <End Role="ChucVu_NguoiDung" Type="Self.ChucVu_NguoiDung" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="NguoiDung">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="ChucVu_NguoiDung">
+        <PropertyRef Name="NguoiDung_ID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
   <Association Name="FK_NguoiDung_DeTai">
     <End Role="DeTai" Type="Self.DeTai" Multiplicity="0..1" />
     <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
@@ -136,10 +171,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="ChucVu_NguoiDung">
-    <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
-    <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="*" />
-  </Association>
   <Association Name="NguoiDung_QuyenHan">
     <End Role="NguoiDung" Type="Self.NguoiDung" Multiplicity="*" />
     <End Role="QuyenHan" Type="Self.QuyenHan" Multiplicity="*" />
@@ -148,9 +179,10 @@
     <End Role="ChucVu" Type="Self.ChucVu" Multiplicity="*" />
     <End Role="QuyenHan" Type="Self.QuyenHan" Multiplicity="*" />
   </Association>
-  <EntityContainer Name="webEntities" annotation:LazyLoadingEnabled="true">
+  <EntityContainer Name="WebMVCEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="BaoCaos" EntityType="Self.BaoCao" />
     <EntitySet Name="ChucVus" EntityType="Self.ChucVu" />
+    <EntitySet Name="ChucVu_NguoiDung" EntityType="Self.ChucVu_NguoiDung" />
     <EntitySet Name="DeTais" EntityType="Self.DeTai" />
     <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
     <EntitySet Name="Nhoms" EntityType="Self.Nhom" />
@@ -165,6 +197,14 @@
       <End Role="BaoCao" EntitySet="BaoCaos" />
       <End Role="PhanHoi" EntitySet="PhanHois" />
     </AssociationSet>
+    <AssociationSet Name="FK_ChucVu_NguoiDung_ChucVu1" Association="Self.FK_ChucVu_NguoiDung_ChucVu1">
+      <End Role="ChucVu" EntitySet="ChucVus" />
+      <End Role="ChucVu_NguoiDung" EntitySet="ChucVu_NguoiDung" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ChucVu_NguoiDung_NguoiDung1" Association="Self.FK_ChucVu_NguoiDung_NguoiDung1">
+      <End Role="NguoiDung" EntitySet="NguoiDungs" />
+      <End Role="ChucVu_NguoiDung" EntitySet="ChucVu_NguoiDung" />
+    </AssociationSet>
     <AssociationSet Name="FK_NguoiDung_DeTai" Association="Self.FK_NguoiDung_DeTai">
       <End Role="DeTai" EntitySet="DeTais" />
       <End Role="NguoiDung" EntitySet="NguoiDungs" />
@@ -172,10 +212,6 @@
     <AssociationSet Name="FK_NguoiDung_Nhom" Association="Self.FK_NguoiDung_Nhom">
       <End Role="Nhom" EntitySet="Nhoms" />
       <End Role="NguoiDung" EntitySet="NguoiDungs" />
-    </AssociationSet>
-    <AssociationSet Name="ChucVu_NguoiDung" Association="Self.ChucVu_NguoiDung">
-      <End Role="NguoiDung" EntitySet="NguoiDungs" />
-      <End Role="ChucVu" EntitySet="ChucVus" />
     </AssociationSet>
     <AssociationSet Name="NguoiDung_QuyenHan" Association="Self.NguoiDung_QuyenHan">
       <End Role="NguoiDung" EntitySet="NguoiDungs" />
@@ -201,11 +237,11 @@
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(webModel.sp_helpdiagramdefinition_Result)">
+    <FunctionImport Name="sp_helpdiagramdefinition" ReturnType="Collection(WebMVCModel.sp_helpdiagramdefinition_Result)">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>
-    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(webModel.sp_helpdiagrams_Result)">
+    <FunctionImport Name="sp_helpdiagrams" ReturnType="Collection(WebMVCModel.sp_helpdiagrams_Result)">
       <Parameter Name="diagramname" Mode="In" Type="String" />
       <Parameter Name="owner_id" Mode="In" Type="Int32" />
     </FunctionImport>

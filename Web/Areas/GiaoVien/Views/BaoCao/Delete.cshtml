@@ -2,7 +2,7 @@
 
 @{
     ViewBag.Title = "Delete";
-    Layout = "~/Areas/SinhVien/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/GiaoVien/Views/Shared/_Layout.cshtml";
 }
 
 <h2>Delete</h2>
@@ -50,6 +50,14 @@
 
         <dd>
             @Html.DisplayFor(model => model.FileUpload)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FilePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FilePath)
         </dd>
 
         <dt>

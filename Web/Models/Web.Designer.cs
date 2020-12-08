@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'D:\LUUBAI\2020-2021_HKI\Do an CNTT\WebMVCDeTai\WebMVC\WebMVC\Web\Web\Models\WebMVC.edmx'. 
+﻿// T4 code generation is enabled for model 'D:\Documents\GitHub\Do_An\Web\Models\Web.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

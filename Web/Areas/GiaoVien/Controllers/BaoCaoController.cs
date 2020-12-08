@@ -49,7 +49,7 @@ namespace Web.Areas.GiaoVien.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Tuan,Nhom_ID,TieuDe,NoiDung,ThoiGianBaoCao,FileUpload")] BaoCao baoCao)
+        public async Task<ActionResult> Create([Bind(Include = "ID,Tuan,Nhom_ID,TieuDe,NoiDung,ThoiGianBaoCao,FileUpload,FilePath")] BaoCao baoCao)
         {
             if (ModelState.IsValid)
             {
@@ -83,7 +83,7 @@ namespace Web.Areas.GiaoVien.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Tuan,Nhom_ID,TieuDe,NoiDung,ThoiGianBaoCao,FileUpload")] BaoCao baoCao)
+        public async Task<ActionResult> Edit([Bind(Include = "ID,Tuan,Nhom_ID,TieuDe,NoiDung,ThoiGianBaoCao,FileUpload,FilePath")] BaoCao baoCao)
         {
             if (ModelState.IsValid)
             {

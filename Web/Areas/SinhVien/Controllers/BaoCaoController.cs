@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Web.Models;
+using System.IO;
 
 namespace Web.Areas.SinhVien.Controllers
 {
@@ -49,20 +50,33 @@ namespace Web.Areas.SinhVien.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,Tuan,Nhom_ID,TieuDe,NoiDung,ThoiGianBaoCao,FileUpload")] BaoCao baoCao)
+        public async Task<ActionResult> Create([Bind(Include = "ID,Tuan,Nhom_ID,TieuDe,NoiDung,ThoiGianBaoCao,FileUpload,FilePath")] BaoCao baoCao, HttpPostedFileBase FileUpload)
         {
+            
             if (ModelState.IsValid)
             {
+                if (FileUpload != null)
+                {
+               
+                    string pic = Path.GetFileName(DateTime.Now.ToString("yyyy_MM_dd-")  + FileUpload.FileName);
+                    string path = Path.Combine(Server.MapPath("~/UploadFiles/") + pic);
+                    FileUpload.SaveAs(path);
+
+                    baoCao.FileUpload = pic;
+                    baoCao.FilePath = "UploadFiles/" + pic;
+                }
                 try
                 {
                     db.BaoCaos.Add(baoCao);
                     await db.SaveChangesAsync();
                     return RedirectToAction("Index");
                 }
-                catch
+                catch (Exception)
                 {
-                    ViewBag.AlertBaoCao = "Mỗi nhóm mỗi tuần chỉ được báo cáo 1 lần";
+
+                    ViewBag.BaoCao="Mỗi nhóm mỗi tuần chỉ báo cáo 1 lần";
                 }
+                
             }
 
             ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "MaNhom", baoCao.Nhom_ID);
@@ -90,7 +104,7 @@ namespace Web.Areas.SinhVien.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,Tuan,Nhom_ID,TieuDe,NoiDung,ThoiGianBaoCao,FileUpload")] BaoCao baoCao)
+        public async Task<ActionResult> Edit([Bind(Include = "ID,Tuan,Nhom_ID,TieuDe,NoiDung,ThoiGianBaoCao,FileUpload,FilePath")] BaoCao baoCao)
         {
             if (ModelState.IsValid)
             {
