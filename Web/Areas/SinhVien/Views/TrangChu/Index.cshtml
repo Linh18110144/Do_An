@@ -1,0 +1,54 @@
+﻿@model IEnumerable<Web.Models.NguoiDung>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/SinhVien/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Trang chủ</h2>
+
+
+<table class="table">
+    <tr>
+        
+        <th>
+            @Html.DisplayNameFor(model => model.HoTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ChucVu.TenChucVu)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DeTai.TenDeTai)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Nhom.TenNhom)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        
+        <td>
+            @Html.DisplayFor(modelItem => item.HoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ChucVu.TenChucVu)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DeTai.TenDeTai)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nhom.TenNhom)
+        </td>
+       
+    </tr>
+}
+
+</table>

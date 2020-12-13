@@ -40,7 +40,7 @@ namespace Web.Areas.GiaoVien.Controllers
         // GET: GiaoVien/BaoCao/Create
         public ActionResult Create()
         {
-            ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "MaNhom");
+            ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "TenNhom");
             return View();
         }
 
@@ -58,7 +58,7 @@ namespace Web.Areas.GiaoVien.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "MaNhom", baoCao.Nhom_ID);
+            ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "TenNhom", baoCao.Nhom_ID);
             return View(baoCao);
         }
 
@@ -74,7 +74,7 @@ namespace Web.Areas.GiaoVien.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "MaNhom", baoCao.Nhom_ID);
+            ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "TenNhom", baoCao.Nhom_ID);
             return View(baoCao);
         }
 
@@ -91,7 +91,7 @@ namespace Web.Areas.GiaoVien.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "MaNhom", baoCao.Nhom_ID);
+            ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "TenNhom", baoCao.Nhom_ID);
             return View(baoCao);
         }
 

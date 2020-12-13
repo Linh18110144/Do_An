@@ -1,4 +1,4 @@
-﻿@model Web.Models.BaoCao
+﻿@model Web.Models.NguoiDung
 
 @{
     ViewBag.Title = "Delete";
@@ -6,57 +6,58 @@
 }
 
 
+
 <h3>Bạn có chắc muốn xóa lựa chọn này?</h3>
 <div>
     
-   
+    <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Tuan)
+            Tên đăng nhập
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Tuan)
+            @Html.DisplayFor(model => model.TenDangNhap)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.TieuDe)
+            Mật khẩu
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.TieuDe)
+            @Html.DisplayFor(model => model.MatKhau)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.NoiDung)
+            @Html.DisplayNameFor(model => model.HoTen)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.NoiDung)
+            @Html.DisplayFor(model => model.HoTen)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ThoiGianBaoCao)
+            @Html.DisplayNameFor(model => model.Email)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ThoiGianBaoCao)
+            @Html.DisplayFor(model => model.Email)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FileUpload)
+            @Html.DisplayNameFor(model => model.ChucVu.TenChucVu)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FileUpload)
+            @Html.DisplayFor(model => model.ChucVu.TenChucVu)
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.FilePath)
+            @Html.DisplayNameFor(model => model.DeTai.TenDeTai)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.FilePath)
+            @Html.DisplayFor(model => model.DeTai.TenDeTai)
         </dd>
 
         <dt>
@@ -74,7 +75,7 @@
 
         <div class="form-actions no-color">
             <input type="submit" value="Xóa" class="btn btn-default" /> |
-            @Html.ActionLink("Trở lại danh sách báo cáo", "Index")
+            @Html.ActionLink("Trở lại trang chính", "Index")
         </div>
     }
 </div>

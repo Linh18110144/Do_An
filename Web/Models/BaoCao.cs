@@ -20,32 +20,31 @@ namespace Web.Models
         {
             this.PhanHois = new HashSet<PhanHoi>();
         }
-
-        [Display(Name = "ID")]
+    
         public int ID { get; set; }
 
         [Display(Name ="Tuần")]
         public Nullable<int> Tuan { get; set; }
 
-        [Display(Name ="Nhom")]
         public Nullable<int> Nhom_ID { get; set; }
 
         [Display(Name = "Tiêu đề")]
-        [Required(ErrorMessage ="{0} bắt buộc nhập")]
+        [Required(ErrorMessage ="Chưa nhập {0}")]
         public string TieuDe { get; set; }
 
         [Display(Name = "Nội dung")]
-        [Required(ErrorMessage = "{0} bắt buộc nhập")]
+        [Required(ErrorMessage = "Chưa nhập {0}")]
         public string NoiDung { get; set; }
 
         [Display(Name = "Thời gian báo cáo")]
         public Nullable<System.DateTime> ThoiGianBaoCao { get; set; }
 
-        [Required(ErrorMessage ="Chọn File Upload")]
+        [Display(Name = "File Upload")]
+        [Required(ErrorMessage = "Chưa chọn {0}")]
         public string FileUpload { get; set; }
+
         public string FilePath { get; set; }
     
-
         public virtual Nhom Nhom { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PhanHoi> PhanHois { get; set; }

@@ -23,14 +23,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="ChucVu_NguoiDung">
-      <EntityTypeMapping TypeName="WebMVCModel.ChucVu_NguoiDung">
-        <MappingFragment StoreEntitySet="ChucVu_NguoiDung">
-          <ScalarProperty Name="NguoiDung_ID" ColumnName="NguoiDung_ID" />
-          <ScalarProperty Name="ChucVu_ID" ColumnName="ChucVu_ID" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="DeTais">
       <EntityTypeMapping TypeName="WebMVCModel.DeTai">
         <MappingFragment StoreEntitySet="DeTai">
@@ -50,8 +42,10 @@
           <ScalarProperty Name="TenDangNhap" ColumnName="TenDangNhap" />
           <ScalarProperty Name="MatKhau" ColumnName="MatKhau" />
           <ScalarProperty Name="HoTen" ColumnName="HoTen" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Nhom_ID" ColumnName="Nhom_ID" />
           <ScalarProperty Name="DeTai_ID" ColumnName="DeTai_ID" />
+          <ScalarProperty Name="ChucVu_ID" ColumnName="ChucVu_ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -59,7 +53,7 @@
       <EntityTypeMapping TypeName="WebMVCModel.Nhom">
         <MappingFragment StoreEntitySet="Nhom">
           <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="MaNhom" ColumnName="MaNhom" />
+          <ScalarProperty Name="TenNhom" ColumnName="TenNhom" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -70,14 +64,6 @@
           <ScalarProperty Name="BaoCao_ID" ColumnName="BaoCao_ID" />
           <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
           <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="QuyenHans">
-      <EntityTypeMapping TypeName="WebMVCModel.QuyenHan">
-        <MappingFragment StoreEntitySet="QuyenHan">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="TenQuyenHan" ColumnName="TenQuyenHan" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -92,22 +78,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <AssociationSetMapping Name="NguoiDung_QuyenHan" TypeName="WebMVCModel.NguoiDung_QuyenHan" StoreEntitySet="NguoiDung_QuyenHan">
-      <EndProperty Name="NguoiDung">
-        <ScalarProperty Name="ID" ColumnName="NguoiDung_ID" />
-      </EndProperty>
-      <EndProperty Name="QuyenHan">
-        <ScalarProperty Name="ID" ColumnName="QuyenHan_ID" />
-      </EndProperty>
-    </AssociationSetMapping>
-    <AssociationSetMapping Name="QuyenHan_ChucVu" TypeName="WebMVCModel.QuyenHan_ChucVu" StoreEntitySet="QuyenHan_ChucVu">
-      <EndProperty Name="ChucVu">
-        <ScalarProperty Name="ID" ColumnName="ChucVu_ID" />
-      </EndProperty>
-      <EndProperty Name="QuyenHan">
-        <ScalarProperty Name="ID" ColumnName="QuyenHan_ID" />
-      </EndProperty>
-    </AssociationSetMapping>
     <FunctionImportMapping FunctionImportName="sp_alterdiagram" FunctionName="WebMVCModel.Store.sp_alterdiagram" />
     <FunctionImportMapping FunctionImportName="sp_creatediagram" FunctionName="WebMVCModel.Store.sp_creatediagram" />
     <FunctionImportMapping FunctionImportName="sp_dropdiagram" FunctionName="WebMVCModel.Store.sp_dropdiagram" />

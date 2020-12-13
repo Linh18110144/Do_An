@@ -23,23 +23,23 @@ namespace Web.Models
     
         public int ID { get; set; }
 
-        [Display(Name ="Tên đề tài")]
-        [Required(ErrorMessage ="{0} bắt buộc nhập")]
+        [Display(Name = "Tên đề tài")]
+        [Required(ErrorMessage = "Chưa nhập {0}")]
         public string TenDeTai { get; set; }
 
         [Display(Name = "Yêu cầu đề tài")]
-        [Required(ErrorMessage = "{0} bắt buộc nhập")]
+        [Required(ErrorMessage = "Chưa nhập {0}")]
         public string YeuCauDeTai { get; set; }
 
         [Display(Name = "Thời gian bắt đầu")]
-        [Required(ErrorMessage = "{0} bắt buộc nhập")]
+        [Required(ErrorMessage = "Chưa nhập {0}")]
         public Nullable<System.DateTime> ThoiGianBatDau { get; set; }
 
         [Display(Name = "Thời gian kết thúc")]
-        [Required(ErrorMessage = "{0} bắt buộc nhập")]
+        [Required(ErrorMessage = "Chưa nhập {0}")]
         public Nullable<System.DateTime> ThoiGianKetThuc { get; set; }
 
-        [Display(Name = "Sồ tuần thực hiện")]
+        [Display(Name = "Số tuần thực hiện")]
         public Nullable<int> SoTuanThucHien { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

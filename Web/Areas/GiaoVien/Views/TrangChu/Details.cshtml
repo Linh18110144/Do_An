@@ -1,0 +1,60 @@
+﻿@model Web.Models.NguoiDung
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/GiaoVien/Views/Shared/_Layout.cshtml";
+}
+
+
+
+<div>
+    <h4>Chi tiết</h4>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.HoTen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.HoTen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ChucVu.TenChucVu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ChucVu.TenChucVu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeTai.TenDeTai)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeTai.TenDeTai)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nhom.TenNhom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nhom.TenNhom)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Trở lại trang chính", "Index")
+</p>

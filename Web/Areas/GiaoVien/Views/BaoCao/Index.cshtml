@@ -5,7 +5,7 @@
     Layout = "~/Areas/GiaoVien/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Báo cáo</h2>
 
 
 <table class="table">
@@ -29,7 +29,7 @@
             Download
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Nhom.MaNhom)
+            @Html.DisplayNameFor(model => model.Nhom.TenNhom)
         </th>
         <th></th>
     </tr>
@@ -57,12 +57,12 @@
             </a>
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Nhom.MaNhom)
+            @Html.DisplayFor(modelItem => item.Nhom.TenNhom)
         </td>
         <td>
             
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.ID }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.ID })
         </td>
     </tr>
 }

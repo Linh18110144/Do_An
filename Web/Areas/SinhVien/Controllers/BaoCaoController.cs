@@ -19,8 +19,12 @@ namespace Web.Areas.SinhVien.Controllers
         // GET: SinhVien/BaoCao
         public async Task<ActionResult> Index()
         {
-            var baoCaos = db.BaoCaos.Include(b => b.Nhom);
-            return View(await baoCaos.ToListAsync());
+            var session = (Common.UserLogin)Session[Web.Common.CommonConstants.USER_SESSION];
+            //var baoCaos = db.BaoCaos.Include(b => b.Nhom);
+            var baoCaos = from p in db.BaoCaos.Include(b => b.Nhom)
+                       where (p.Nhom_ID == session.NhomID)
+                       select p;
+            return View(baoCaos);
         }
 
         // GET: SinhVien/BaoCao/Details/5
@@ -41,7 +45,7 @@ namespace Web.Areas.SinhVien.Controllers
         // GET: SinhVien/BaoCao/Create
         public ActionResult Create()
         {
-            ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "MaNhom");
+            ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "TenNhom");
             return View();
         }
 
@@ -79,7 +83,7 @@ namespace Web.Areas.SinhVien.Controllers
                 
             }
 
-            ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "MaNhom", baoCao.Nhom_ID);
+            ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "TenNhom", baoCao.Nhom_ID);
             return View(baoCao);
         }
 
@@ -95,7 +99,7 @@ namespace Web.Areas.SinhVien.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "MaNhom", baoCao.Nhom_ID);
+            ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "TenNhom", baoCao.Nhom_ID);
             return View(baoCao);
         }
 
@@ -112,7 +116,7 @@ namespace Web.Areas.SinhVien.Controllers
                 await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
-            ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "MaNhom", baoCao.Nhom_ID);
+            ViewBag.Nhom_ID = new SelectList(db.Nhoms, "ID", "TenNhom", baoCao.Nhom_ID);
             return View(baoCao);
         }
 

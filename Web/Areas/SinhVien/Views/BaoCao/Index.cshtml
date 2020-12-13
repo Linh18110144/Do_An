@@ -5,10 +5,10 @@
     Layout = "~/Areas/SinhVien/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Báo cáo</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Tạo mới", "Create")
 </p>
 <table class="table">
     <tr>
@@ -43,7 +43,7 @@
         @Html.DisplayFor(modelItem => item.Tuan)
     </td>
     <td>
-        @Html.DisplayFor(modelItem => item.Nhom.MaNhom)
+        @Html.DisplayFor(modelItem => item.Nhom.TenNhom)
     </td>
     <td>
         @Html.DisplayFor(modelItem => item.TieuDe)
@@ -65,7 +65,7 @@
 
     <td>
 
-        @Html.ActionLink("Details", "Details", new { id = item.ID })
+        @Html.ActionLink("Chi tiết", "Details", new { id = item.ID })
 
     </td>
 </tr>

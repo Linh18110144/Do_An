@@ -130,11 +130,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\GiaoVien\Controllers\BaoCaoController.cs" />
     <Compile Include="Areas\GiaoVien\Controllers\DeTaiController.cs" />
+    <Compile Include="Areas\GiaoVien\Controllers\TrangChuController.cs" />
     <Compile Include="Areas\GiaoVien\GiaoVienAreaRegistration.cs" />
     <Compile Include="Areas\SinhVien\Controllers\BaoCaoController.cs" />
     <Compile Include="Areas\SinhVien\Controllers\DeTaiController.cs" />
+    <Compile Include="Areas\SinhVien\Controllers\TrangChuController.cs" />
     <Compile Include="Areas\SinhVien\SinhVienAreaRegistration.cs" />
-    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Common\CommonConstants.cs" />
+    <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -143,9 +146,6 @@
       <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ChucVu.cs">
-      <DependentUpon>Web.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\ChucVu_NguoiDung.cs">
       <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\DeTai.cs">
@@ -158,9 +158,6 @@
       <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\PhanHoi.cs">
-      <DependentUpon>Web.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\QuyenHan.cs">
       <DependentUpon>Web.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\sp_helpdiagramdefinition_Result.cs">
@@ -2071,13 +2068,6 @@
     <Content Include="Areas\SinhVien\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\SinhVien\Views\DeTai\Details.cshtml" />
     <Content Include="Areas\SinhVien\Views\DeTai\Index.cshtml" />
-    <EntityDeploy Include="Models\Web.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Web.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Web.edmx.diagram">
-      <DependentUpon>Web.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\SinhVien\Views\BaoCao\Create.cshtml" />
     <Content Include="Areas\SinhVien\Views\BaoCao\Details.cshtml" />
     <Content Include="Areas\SinhVien\Views\BaoCao\Index.cshtml" />
@@ -2089,6 +2079,19 @@
     <Content Include="Areas\GiaoVien\Views\BaoCao\Delete.cshtml" />
     <Content Include="Areas\GiaoVien\Views\BaoCao\Details.cshtml" />
     <Content Include="Areas\GiaoVien\Views\BaoCao\Index.cshtml" />
+    <EntityDeploy Include="Models\Web.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Web.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Web.edmx.diagram">
+      <DependentUpon>Web.edmx</DependentUpon>
+    </Content>
+    <Content Include="Areas\GiaoVien\Views\TrangChu\Create.cshtml" />
+    <Content Include="Areas\GiaoVien\Views\TrangChu\Delete.cshtml" />
+    <Content Include="Areas\GiaoVien\Views\TrangChu\Details.cshtml" />
+    <Content Include="Areas\GiaoVien\Views\TrangChu\Edit.cshtml" />
+    <Content Include="Areas\GiaoVien\Views\TrangChu\Index.cshtml" />
+    <Content Include="Areas\SinhVien\Views\TrangChu\Index.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -2110,15 +2113,12 @@
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Login\Index.cshtml" />
+    <Content Include="Views\Login\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\GiaoVien\Data\" />
+    <Folder Include="Areas\GiaoVien\Views\Base\" />
     <Folder Include="Areas\SinhVien\Data\" />
     <Folder Include="Assets\SinhVien\" />
     <Folder Include="UploadFiles\" />
