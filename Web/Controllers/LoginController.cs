@@ -17,19 +17,22 @@ namespace Web.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult Login(NguoiDung nguoiDung)
         {
 
             if (ModelState.IsValid)
             {
+                var matkhau = Encryptor.MD5Hash(nguoiDung.MatKhau);
                 using (WebMVCEntities db = new WebMVCEntities())
                 {
-                    var user = db.NguoiDungs.Where(a => a.TenDangNhap.Equals(nguoiDung.TenDangNhap) && a.MatKhau.Equals(nguoiDung.MatKhau)).FirstOrDefault();
+                    var user = db.NguoiDungs.Where(a => a.TenDangNhap.Equals(nguoiDung.TenDangNhap) && a.MatKhau.Equals(matkhau)).FirstOrDefault();
                     if (user != null)
                     {
                         var userSession = new UserLogin();
                         userSession.UserID = user.ID;
                         userSession.UserName = user.TenDangNhap;
+                        userSession.HoTen = user.HoTen;
 
                         if (user.ChucVu_ID == 2)
                         {

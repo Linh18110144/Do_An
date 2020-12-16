@@ -12,8 +12,8 @@
     <Property Name="ThoiGianBaoCao" Type="DateTime" Precision="3" />
     <Property Name="FileUpload" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="FilePath" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="PhanHoi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
     <NavigationProperty Name="Nhom" Relationship="Self.FK_BaoCao_Nhom" FromRole="BaoCao" ToRole="Nhom" />
-    <NavigationProperty Name="PhanHois" Relationship="Self.FK_PhanHoi_BaoCao" FromRole="BaoCao" ToRole="PhanHoi" />
   </EntityType>
   <EntityType Name="ChucVu">
     <Key>
@@ -60,16 +60,6 @@
     <NavigationProperty Name="BaoCaos" Relationship="Self.FK_BaoCao_Nhom" FromRole="Nhom" ToRole="BaoCao" />
     <NavigationProperty Name="NguoiDungs" Relationship="Self.FK_NguoiDung_Nhom" FromRole="Nhom" ToRole="NguoiDung" />
   </EntityType>
-  <EntityType Name="PhanHoi">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="BaoCao_ID" Type="Int32" />
-    <Property Name="NoiDung" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="TieuDe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-    <NavigationProperty Name="BaoCao" Relationship="Self.FK_PhanHoi_BaoCao" FromRole="PhanHoi" ToRole="BaoCao" />
-  </EntityType>
   <EntityType Name="sysdiagram">
     <Key>
       <PropertyRef Name="diagram_id" />
@@ -89,18 +79,6 @@
       </Principal>
       <Dependent Role="BaoCao">
         <PropertyRef Name="Nhom_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_PhanHoi_BaoCao">
-    <End Role="BaoCao" Type="Self.BaoCao" Multiplicity="0..1" />
-    <End Role="PhanHoi" Type="Self.PhanHoi" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="BaoCao">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="PhanHoi">
-        <PropertyRef Name="BaoCao_ID" />
       </Dependent>
     </ReferentialConstraint>
   </Association>
@@ -146,15 +124,10 @@
     <EntitySet Name="DeTais" EntityType="Self.DeTai" />
     <EntitySet Name="NguoiDungs" EntityType="Self.NguoiDung" />
     <EntitySet Name="Nhoms" EntityType="Self.Nhom" />
-    <EntitySet Name="PhanHois" EntityType="Self.PhanHoi" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
     <AssociationSet Name="FK_BaoCao_Nhom" Association="Self.FK_BaoCao_Nhom">
       <End Role="Nhom" EntitySet="Nhoms" />
       <End Role="BaoCao" EntitySet="BaoCaos" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PhanHoi_BaoCao" Association="Self.FK_PhanHoi_BaoCao">
-      <End Role="BaoCao" EntitySet="BaoCaos" />
-      <End Role="PhanHoi" EntitySet="PhanHois" />
     </AssociationSet>
     <AssociationSet Name="FK_NguoiDung_ChucVu" Association="Self.FK_NguoiDung_ChucVu">
       <End Role="ChucVu" EntitySet="ChucVus" />

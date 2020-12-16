@@ -5,10 +5,10 @@
     Layout = "~/Areas/SinhVien/Views/Shared/_Layout.cshtml";
 }
 
-
+<h2>Chi tiết</h2>
 
 <div>
-    <h4>Chi tiết</h4>
+    
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -17,6 +17,13 @@
 
         <dd>
             @Html.DisplayFor(model => model.Tuan)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Nhom.TenNhom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nhom.TenNhom)
         </dd>
 
         <dt>
@@ -60,16 +67,14 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Nhom.TenNhom)
+            @Html.DisplayNameFor(model => model.PhanHoi)
         </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Nhom.TenNhom)
-        </dd>
+       
+
 
     </dl>
 </div>
 <p>
-    
     @Html.ActionLink("Trở lại trang chính", "Index")
 </p>

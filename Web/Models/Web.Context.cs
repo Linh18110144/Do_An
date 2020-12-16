@@ -32,7 +32,6 @@ namespace Web.Models
         public virtual DbSet<DeTai> DeTais { get; set; }
         public virtual DbSet<NguoiDung> NguoiDungs { get; set; }
         public virtual DbSet<Nhom> Nhoms { get; set; }
-        public virtual DbSet<PhanHoi> PhanHois { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
     
         public virtual int sp_alterdiagram(string diagramname, Nullable<int> owner_id, Nullable<int> version, byte[] definition)

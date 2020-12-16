@@ -11,6 +11,8 @@ namespace Web.Common
         public int UserID { set; get; }
         public string UserName { set; get; }
 
+        public string HoTen { set; get; }
+
         public  int? NhomID { set; get; }
 
    

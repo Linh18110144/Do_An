@@ -17,19 +17,25 @@ namespace Web.Models
     {
         public int ID { get; set; }
 
-       
+        [Display(Name ="Tên đăng nhập")]
         public string TenDangNhap { get; set; }
 
-       
+        [Display(Name = "Mật khẩu")]
         public string MatKhau { get; set; }
 
-        [Display(Name = "Họ và tên")] 
+        [Display(Name = "Họ tên")]
         public string HoTen { get; set; }
 
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Display(Name = "Tên nhóm")]
         public Nullable<int> Nhom_ID { get; set; }
+
+        [Display(Name = "Tên đề tài")]
         public Nullable<int> DeTai_ID { get; set; }
+
+        [Display(Name = "Chức vụ")]
         public Nullable<int> ChucVu_ID { get; set; }
     
         public virtual ChucVu ChucVu { get; set; }

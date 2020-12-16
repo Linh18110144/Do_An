@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Web.Models.DeTai>
+﻿@model PagedList.IPagedList<Web.Models.DeTai>
+@using PagedList.Mvc;
+
 
 @{
     ViewBag.Title = "Index";
@@ -13,19 +15,19 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.TenDeTai)
+            @Html.DisplayNameFor(model => model.First().TenDeTai)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.YeuCauDeTai)
+            @Html.DisplayNameFor(model => model.First().YeuCauDeTai)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ThoiGianBatDau)
+            @Html.DisplayNameFor(model => model.First().ThoiGianBatDau)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ThoiGianKetThuc)
+            @Html.DisplayNameFor(model => model.First().ThoiGianKetThuc)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.SoTuanThucHien)
+            @Html.DisplayNameFor(model => model.First().SoTuanThucHien)
         </th>
         <th></th>
     </tr>
@@ -53,7 +55,12 @@
                 @Html.ActionLink("Chi tiết", "Details", new { id = item.ID }) |
                 @Html.ActionLink("Xóa", "Delete", new { id = item.ID })
             </td>
+
         </tr>
     }
 
 </table>
+<div style="display:flex" class=" justify-content-end ">
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page }))
+</div>

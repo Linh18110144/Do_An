@@ -8,6 +8,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Web.Models;
+using PagedList;
+using X.PagedList;
 
 namespace Web.Areas.SinhVien.Controllers
 {
@@ -16,9 +18,10 @@ namespace Web.Areas.SinhVien.Controllers
         private WebMVCEntities db = new WebMVCEntities();
 
         // GET: SinhVien/DeTai
-        public async Task<ActionResult> Index()
+        public ActionResult Index(int Page=1, int PageSize=8)
         {
-            return View(await db.DeTais.ToListAsync());
+            var deTai1 = db.DeTais.OrderBy(p => p.ID).ToPagedList(Page, PageSize);
+            return View(deTai1);
         }
 
         // GET: SinhVien/DeTai/Details/5

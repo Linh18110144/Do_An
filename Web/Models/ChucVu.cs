@@ -23,7 +23,8 @@ namespace Web.Models
     
         public int ID { get; set; }
 
-        [Display(Name = "Chức vụ")]
+        [Display(Name ="Tên chức vụ")]
+        [Required(ErrorMessage ="Chưa nhập {0}")]
         public string TenChucVu { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

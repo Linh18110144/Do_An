@@ -12,6 +12,7 @@
           <ScalarProperty Name="ThoiGianBaoCao" ColumnName="ThoiGianBaoCao" />
           <ScalarProperty Name="FileUpload" ColumnName="FileUpload" />
           <ScalarProperty Name="FilePath" ColumnName="FilePath" />
+          <ScalarProperty Name="PhanHoi" ColumnName="PhanHoi" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -54,16 +55,6 @@
         <MappingFragment StoreEntitySet="Nhom">
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="TenNhom" ColumnName="TenNhom" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="PhanHois">
-      <EntityTypeMapping TypeName="WebMVCModel.PhanHoi">
-        <MappingFragment StoreEntitySet="PhanHoi">
-          <ScalarProperty Name="ID" ColumnName="ID" />
-          <ScalarProperty Name="BaoCao_ID" ColumnName="BaoCao_ID" />
-          <ScalarProperty Name="NoiDung" ColumnName="NoiDung" />
-          <ScalarProperty Name="TieuDe" ColumnName="TieuDe" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

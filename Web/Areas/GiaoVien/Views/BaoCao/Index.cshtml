@@ -1,4 +1,5 @@
-﻿@model IEnumerable<Web.Models.BaoCao>
+﻿@model PagedList.IPagedList<Web.Models.BaoCao>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
@@ -11,60 +12,69 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Tuan)
+            @Html.DisplayNameFor(model => model.First().Tuan)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.TieuDe)
+            @Html.DisplayNameFor(model => model.First().Nhom.TenNhom)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.NoiDung)
+            @Html.DisplayNameFor(model => model.First().TieuDe)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ThoiGianBaoCao)
+            @Html.DisplayNameFor(model => model.First().NoiDung)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.FileUpload)
+            @Html.DisplayNameFor(model => model.First().ThoiGianBaoCao)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.First().FileUpload)
         </th>
         <th>
             Download
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Nhom.TenNhom)
-        </th>
+
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Tuan)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.TieuDe)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NoiDung)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ThoiGianBaoCao)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.FileUpload)
-        </td>
-        <td>
-            <a href="/@item.FilePath" download>
-                Download
-            </a>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Nhom.TenNhom)
-        </td>
-        <td>
-            
-            @Html.ActionLink("Chi tiết", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Xóa", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tuan)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nhom.TenNhom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TieuDe)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NoiDung)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ThoiGianBaoCao)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FileUpload)
+            </td>
+            <td>
+                <a href="/@item.FilePath" download>
+                    Download
+                </a>
+            </td>
+
+            <td>
+
+                @Html.ActionLink("Chi tiết", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Xóa", "Delete", new { id = item.ID }) |
+                @Html.ActionLink("Phản hồi", "Feedback", new { id = item.ID })
+
+            </td>
+        </tr>
+    }
 
 </table>
+<div style="display:flex" class=" justify-content-end ">
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page }))
+</div>

@@ -8,6 +8,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Web.Models;
+using PagedList.Mvc;
+using PagedList;
 
 namespace Web.Areas.GiaoVien.Controllers
 {
@@ -16,9 +18,10 @@ namespace Web.Areas.GiaoVien.Controllers
         private WebMVCEntities db = new WebMVCEntities();
 
         // GET: GiaoVien/DeTai
-        public async Task<ActionResult> Index()
+        public ActionResult Index(int Page = 1, int PageSize = 8)
         {
-            return View(await db.DeTais.ToListAsync());
+            var deTai1 = db.DeTais.OrderBy(p => p.ID).ToPagedList(Page, PageSize);
+            return View(deTai1);
         }
 
         // GET: GiaoVien/DeTai/Details/5
@@ -92,9 +95,16 @@ namespace Web.Areas.GiaoVien.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(deTai).State = EntityState.Modified;
-                await db.SaveChangesAsync();
-                return RedirectToAction("Index");
+                try
+                {
+                    db.Entry(deTai).State = EntityState.Modified;
+                    await db.SaveChangesAsync();
+                    return RedirectToAction("Index");
+                }
+                catch
+                {
+                    ViewBag.Alert = "Tên đề tài không được trùng nhau và thời gian bắt đầu phải nhỏ hơn thời gian kết thúc. Mời nhập lại!";
+                }
             }
             return View(deTai);
         }

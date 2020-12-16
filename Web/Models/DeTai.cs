@@ -23,8 +23,8 @@ namespace Web.Models
     
         public int ID { get; set; }
 
-        [Display(Name = "Tên đề tài")]
-        [Required(ErrorMessage = "Chưa nhập {0}")]
+        [Display(Name ="Tên đề tài")]
+        [Required(ErrorMessage ="Chưa nhập {0}")]
         public string TenDeTai { get; set; }
 
         [Display(Name = "Yêu cầu đề tài")]

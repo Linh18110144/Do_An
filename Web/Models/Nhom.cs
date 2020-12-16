@@ -24,8 +24,8 @@ namespace Web.Models
     
         public int ID { get; set; }
 
-        [Display(Name ="Tên nhóm")]
-        [Required(ErrorMessage ="Chưa nhập {0}")]
+        [Display(Name = "Tên nhóm")]
+        [Required(ErrorMessage = "Chưa nhập {0}")]
         public string TenNhom { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

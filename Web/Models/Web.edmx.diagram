@@ -4,16 +4,14 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="e92478f0b32d41ad8dc3f5e954c15ddd" Name="Diagram1">
-        <EntityTypeShape EntityType="WebMVCModel.BaoCao" Width="1.5" PointX="3" PointY="4.875" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebMVCModel.ChucVu" Width="1.5" PointX="0.75" PointY="2.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebMVCModel.DeTai" Width="1.5" PointX="0.75" PointY="8" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebMVCModel.NguoiDung" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebMVCModel.Nhom" Width="1.5" PointX="0.75" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebMVCModel.PhanHoi" Width="1.5" PointX="5.25" PointY="5.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="WebMVCModel.sysdiagram" Width="1.5" PointX="5.75" PointY="2.5" IsExpanded="true" />
+      <Diagram DiagramId="d3570446fd5143fbb00e82734f1679f0" Name="Diagram1">
+        <EntityTypeShape EntityType="WebMVCModel.BaoCao" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebMVCModel.ChucVu" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebMVCModel.DeTai" Width="1.5" PointX="3.75" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebMVCModel.NguoiDung" Width="1.5" PointX="6" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebMVCModel.Nhom" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="WebMVCModel.sysdiagram" Width="1.5" PointX="0.75" PointY="8.25" IsExpanded="true" />
         <AssociationConnector Association="WebMVCModel.FK_BaoCao_Nhom" ManuallyRouted="false" />
-        <AssociationConnector Association="WebMVCModel.FK_PhanHoi_BaoCao" ManuallyRouted="false" />
         <AssociationConnector Association="WebMVCModel.FK_NguoiDung_ChucVu" ManuallyRouted="false" />
         <AssociationConnector Association="WebMVCModel.FK_NguoiDung_DeTai" ManuallyRouted="false" />
         <AssociationConnector Association="WebMVCModel.FK_NguoiDung_Nhom" ManuallyRouted="false" />

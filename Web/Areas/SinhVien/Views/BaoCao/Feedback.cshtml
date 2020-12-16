@@ -1,0 +1,44 @@
+﻿@model PagedList.IPagedList<Web.Models.BaoCao>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Feedback";
+    Layout = "~/Areas/SinhVien/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Phản hồi</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.First().Tuan)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.First().PhanHoi)
+        </th>
+
+       
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Tuan)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.PhanHoi)
+            </td>
+
+          
+        </tr>
+    }
+
+</table>
+<div style="display:flex" class=" justify-content-end ">
+    <link href="~/Content/PagedList.css" rel="stylesheet" />
+    @Html.PagedListPager(Model, Page => Url.Action("Index", new { Page }))
+</div>

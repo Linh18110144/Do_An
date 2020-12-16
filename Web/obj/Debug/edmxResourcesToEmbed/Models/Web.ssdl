@@ -12,6 +12,7 @@
     <Property Name="ThoiGianBaoCao" Type="datetime" />
     <Property Name="FileUpload" Type="varchar" MaxLength="500" />
     <Property Name="FilePath" Type="varchar" MaxLength="500" />
+    <Property Name="PhanHoi" Type="ntext" />
   </EntityType>
   <EntityType Name="ChucVu">
     <Key>
@@ -50,15 +51,6 @@
     </Key>
     <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="TenNhom" Type="varchar" MaxLength="50" Nullable="false" />
-  </EntityType>
-  <EntityType Name="PhanHoi">
-    <Key>
-      <PropertyRef Name="ID" />
-    </Key>
-    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-    <Property Name="BaoCao_ID" Type="int" />
-    <Property Name="NoiDung" Type="ntext" />
-    <Property Name="TieuDe" Type="nvarchar" MaxLength="50" />
   </EntityType>
   <EntityType Name="sysdiagrams">
     <Key>
@@ -118,18 +110,6 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK_PhanHoi_BaoCao">
-    <End Role="BaoCao" Type="Self.BaoCao" Multiplicity="0..1" />
-    <End Role="PhanHoi" Type="Self.PhanHoi" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="BaoCao">
-        <PropertyRef Name="ID" />
-      </Principal>
-      <Dependent Role="PhanHoi">
-        <PropertyRef Name="BaoCao_ID" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
   <Function Name="sp_alterdiagram" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="diagramname" Type="nvarchar" Mode="In" />
@@ -167,7 +147,6 @@
     <EntitySet Name="DeTai" EntityType="Self.DeTai" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="NguoiDung" EntityType="Self.NguoiDung" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="Nhom" EntityType="Self.Nhom" Schema="dbo" store:Type="Tables" />
-    <EntitySet Name="PhanHoi" EntityType="Self.PhanHoi" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
     <AssociationSet Name="FK_BaoCao_Nhom" Association="Self.FK_BaoCao_Nhom">
       <End Role="Nhom" EntitySet="Nhom" />
@@ -184,10 +163,6 @@
     <AssociationSet Name="FK_NguoiDung_Nhom" Association="Self.FK_NguoiDung_Nhom">
       <End Role="Nhom" EntitySet="Nhom" />
       <End Role="NguoiDung" EntitySet="NguoiDung" />
-    </AssociationSet>
-    <AssociationSet Name="FK_PhanHoi_BaoCao" Association="Self.FK_PhanHoi_BaoCao">
-      <End Role="BaoCao" EntitySet="BaoCao" />
-      <End Role="PhanHoi" EntitySet="PhanHoi" />
     </AssociationSet>
   </EntityContainer>
 </Schema>
